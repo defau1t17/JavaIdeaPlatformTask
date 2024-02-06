@@ -1,6 +1,5 @@
 package org.example;
 
-import java.io.IOException;
 
 public class Main {
 
@@ -15,7 +14,7 @@ public class Main {
         parserService = new ParserService<>();
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
         TicketsModel parsedData = parserService.getParsedData("src/main/resources/tickets.json", TicketsModel.class);
         service.getMinimumFlightTime(parsedData).entrySet().forEach(entry -> {
             System.out.println(String.format("Company '%s' completed the flight over %s", entry.getKey(), converterService.convertSecondsToNormalTime(entry.getValue())));
