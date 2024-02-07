@@ -1,6 +1,10 @@
 package org.example;
 
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
+import java.util.function.IntPredicate;
+import java.util.stream.Collectors;
 
 public class FlightService {
 
@@ -23,12 +27,22 @@ public class FlightService {
     }
 
     public double findAverageFlightPrice(TicketsModel ticketsModel) {
-        return ticketsModel.getTickets().stream().mapToInt(Ticket::getPrice).sum() / ticketsModel.getTickets().size();
+        return ticketsModel
+                .getTickets()
+                .stream()
+                .mapToInt(Ticket::getPrice)
+                .sum() / ticketsModel.getTickets().size();
     }
 
     public double findMedian(TicketsModel ticketsModel) {
-        return ticketsModel.getTickets().stream().mapToInt(Ticket::getStops).sum() / 2;
+        List<Integer> collect = ticketsModel
+                .getTickets()
+                .stream()
+                .mapToInt(Ticket::getPrice)
+                .sorted().boxed()
+                .collect(Collectors.toList());
+        int middle = collect.size() / 2;
+        return (collect.size() % 2 == 0) ? (double) (collect.get(middle - 1) + collect.get(middle)) / 2 : collect.get(middle);
     }
-
 }
 

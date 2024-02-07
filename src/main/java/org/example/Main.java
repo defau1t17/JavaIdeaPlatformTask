@@ -20,6 +20,9 @@ public class Main {
             System.out.println(String.format("Company '%s' completed the flight over %s", entry.getKey(), converterService.convertSecondsToNormalTime(entry.getValue())));
         });
         System.out.println("|------------------------------------------------------------------|");
+        System.out.println(String.format("Average flight price : %s ", service.findAverageFlightPrice(parsedData)));
+        System.out.println(String.format("Median : %s ", service.findMedian(parsedData)));
         System.out.println(String.format("Difference between average flight price and median = %s", (service.findAverageFlightPrice(parsedData) - service.findMedian(parsedData))));
+
     }
 }
