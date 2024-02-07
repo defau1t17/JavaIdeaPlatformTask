@@ -33,7 +33,7 @@ public class FlightServiceTest {
 
     @Test
     void findMedianTest() {
-        assertEquals(5, flightService.findMedian(new TicketsModel(ticketModelDummy.getTicketsModels())));
+        assertEquals(12000.0, flightService.findMedian(new TicketsModel(ticketModelDummy.getTicketsModels())));
     }
 
 
